@@ -12,7 +12,11 @@ while seguir == 's':
     except ValueError:
         print("Trataste de convertir algo diferente a un numero")
     numeros.append(numero)
+    
     seguir = input("Desea seguir? s/n: ")
+    while seguir != 's' and seguir != 'n':
+        print("Ingrese una opcion valida.")
+        seguir = input("Desea seguir? s/n: ")
 
 print(f"posicion de memoria de la lista {id(numeros)}")
 for numero in numeros:

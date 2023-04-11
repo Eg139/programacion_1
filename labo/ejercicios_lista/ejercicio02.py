@@ -15,8 +15,15 @@ seguir = 's'
 
 
 while seguir == 's':
-    palabra = input("Ingrese lo que desea traducir: ")
     palabra_traducida = ''
+    
+    while True:
+        palabra = input("Ingrese lo que desea traducir: ")
+        if palabra.isalpha():
+            break
+        else:
+            print("Eror, no se puede ingresar numeros o caracteres especiales")
+
     if not palabra in palabras_español:
         palabra_traducida = translator.translate(palabra,src='es', dest= 'en').text
         palabras_español.append(palabra)

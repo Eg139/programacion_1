@@ -9,29 +9,42 @@ seguir = 's'
 
 while seguir == 's':
     auto_nuevo = []
-    try:
+    while True:
         marca = input("Ingrese la marca del auto: ")
-        while True:
+        if marca.isalpha():
+            break
+        else:
+            print("Eror, no se puede ingresar numeros o caracteres especiales")
+
+    while True:
+        try:
             año = int(input("Ingrese el año del auto: "))
             if año > 1800 and año <= 2023:
                 break
             else:
                 print("Año invalido")
-        while True:
+        except ValueError:
+            print("Trataste de convertir algo diferente a un numero")
+
+    while True:
+        try:
             precio = float(input("Ingrese el precio del auto: "))
             if precio > 0:
                 break
             else:
                 print("Precio invalido")           
-    except ValueError:
-        print("Trataste de convertir algo diferente a un numero")
-    else:
-        auto_nuevo.append(marca)
-        auto_nuevo.append(año)
-        auto_nuevo.append(precio)
-        autos.append(auto_nuevo)
+        except ValueError:
+            print("Trataste de convertir algo diferente a un numero")
+    auto_nuevo.append(marca)
+    auto_nuevo.append(año)
+    auto_nuevo.append(precio)
+    autos.append(auto_nuevo)
 
     seguir = input("Desea seguir ingresando autos s/n: ")
+    while seguir != 's' and seguir != 'n':
+        print("Ingrese una opcion valida.")
+        seguir = input("Desea seguir ingresando autos s/n: ")
+
 
 for auto in autos:
     print(auto)

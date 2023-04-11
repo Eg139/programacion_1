@@ -11,20 +11,38 @@ votos = ['Afirmativo','Negativo','Negativo','Abstencion','Abstencion']
 asistencias = ['Presente','Presente','Presente','Ausente','Presente']
 
 def alta_senador():
+    while True:
         nombre = input("Ingrese el nombre: ")
-        asistencia = input("Ingrese la asistencia del senador(Presente o Ausente): ")
-        if asistencia == 'Ausente':
-            voto = 'Abstencion'
+        if nombre.isalpha():
+            break
         else:
-            while True:
-                voto = input("Afirmativo, Negativo o Abstencion: ")
-                if voto != 'Afirmativo' and voto != 'Negativo' and voto != 'Abstencion':
+            print("Eror, no se puede ingresar numeros o caracteres especiales")
+
+    while True:
+        asistencia = input("Ingrese la asistencia del senador(Presente o Ausente): ")
+        if asistencia.isalpha():
+            if(asistencia == 'Presente' or asistencia == 'Ausente'):
+                break
+            else:
+                print("Opcion invalida")
+        else:
+            print("Eror, no se puede ingresar numeros o caracteres especiales")    
+    
+    if asistencia == 'Ausente':
+        voto = 'Abstencion'
+    else:
+        while True:
+            voto = input("Su voto va a ser(Afirmativo, Negativo o Abstencion)?: ")
+            if voto.isalpha:
+                if voto == 'Afirmativo' or voto == 'Negativo' or voto == 'Abstencion':
                     break
                 else:
                     print("Opcion invalida.")
-        nombres.append(nombre)
-        asistencias.append(asistencia)
-        votos.append(voto)
+            else:
+                print("Eror, no se puede ingresar numeros o caracteres especiales")
+    nombres.append(nombre)
+    asistencias.append(asistencia)
+    votos.append(voto)
 
 while True:
     
