@@ -5,9 +5,11 @@
 # cargue de nuevo los números con la opción 1
 import os
 tam = 10
-# numeros = [4,48,-8,45,0,4,7,10,100,7]
-numeros = []
+numeros = [4,48,-8,45,0,4,7,10,100,7]
+# numeros = []
 flag_numeros = False
+if len(numeros)>0:
+    flag_numeros = True
 while True:
     os.system('cls')
     print("# 1 cargar una lista con 10 números")
@@ -148,6 +150,7 @@ while True:
     elif opcion == 10:
         if flag_numeros:
             numeros.clear()
+            flag_numeros = False
         else:
             print("Antes debe ingresar numeros")
     elif opcion == 11:
