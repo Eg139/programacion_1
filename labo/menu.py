@@ -1,7 +1,5 @@
 import os
 
-opciones = ["1","2","3","4","5","6","7"]
-
 while True:
     os.system('cls')
     print("          ********************    MENU DE OPCIONES    **************************         ")
@@ -11,12 +9,8 @@ while True:
     print("# 4. Informar el nombre y el peso del perro con más peso.")
     print("# 5 Ingresar paciente")
     print("# 6. salir")
-    while True:
-        opcion = input("Ingrese una opcion:  ")
-        if opcion in opciones:
-            break
-        else:
-            print("Opcion invalida")
+    
+    opcion = input("Ingrese una opcion:  ")
 
             
     if opcion == "1":
@@ -33,5 +27,7 @@ while True:
         print("Saliendo del programa")
         
         break
+    else:
+        print("Opcion invalida.")
 
     os.system('pause')

@@ -27,12 +27,13 @@
 # El programa debe permitir al usuario realizar estas operaciones tantas veces como desee, hasta que decida salir del programa.
 #  El programa debe mostrar un menú de opciones para que el usuario pueda elegir la operación que desea realizar.
 import os
-identificaciones = []
-nombres = []
-edades = []
-membresias = []
+identificaciones = [1,12,5,4]
+nombres = ["Pepe","Moni","Dardo","Paola"]
+edades = [50,49,30,19]
+membresias = ["mensual","mensual","anual","anual"]
 
 while True:
+    tam = len(membresias)
     os.system('cls')
     # Mostrar menú de opciones
     print("Menú de opciones:")
@@ -96,23 +97,98 @@ while True:
        
     # Opción 3: Actualizar el tipo de membresía de un miembro
     elif opcion == "3":
-        pass
+        flag = False
+        while True:
+            try:
+                print("Nro ID.\tTipo membresia")
+                for x in range(len(identificaciones)):
+                    print(f"{identificaciones[x]}  \t{membresias[x]}")
 
+                aux_id = int(input("Ingrese el numero de identificacion para cambiar la membresia:  "))
+                if aux_id in identificaciones:
+                    flag = True
+                    break
+                else:
+                    print("Nro de identificacion no encontrado.\n")
 
+            except ValueError:
+                 print("Trataste de convertir algo diferente a un numero.\n")
+        if flag:
+            for z in range(len(identificaciones)):
+                if aux_id == identificaciones[z]:
+                    while True: 
+                        membresia_aux =  input("Ingrese el tipo de membresia(mensual o anual): ")
+                        if membresia_aux.isalpha():
+                            if membresia_aux == "mensual" or membresia_aux == "anual":
+                                membresias[z] = membresia_aux
+                                break
+                            else:
+                                print("Tipo de membresia no valido.\n")
+                        else:
+                            print("Ingreso un elemento invalido.\n")   
+        
     # Opción 4: Buscar información de un miembro
     elif opcion == "4":
-        pass
+        flag = False
+        while True:
+            try:
+                print("Nro ID.\tNombre")
+                for x in range(len(identificaciones)):
+                    print(f"{identificaciones[x]}  \t{nombres[x]}")
+
+                aux_id = int(input("Ingrese el numero de identificacion para cambiar la membresia:  "))
+                if aux_id in identificaciones:
+                    flag = True
+                    break
+                else:
+                    print("Nro de identificacion no encontrado.\n")
+
+            except ValueError:
+                 print("Trataste de convertir algo diferente a un numero.\n")
+        if flag:
+            print("Nro ID.\tNombre\tEdad\tTipo membresia")
+            for z in range(len(identificaciones)):
+                if aux_id == identificaciones[z]:
+                    print(f"{identificaciones[z]} \t{nombres[z]} \t{edades[z]} \t{membresias[z]}")
 
 
     # Opción 5: Calcular el promedio de edad de los miembros
     elif opcion == "5":
-        pass
+        promedio = 0
+        acumulador = 0
+        for edad in edades:
+            acumulador += edad
+        promedio = acumulador / tam
+        print(f"El promedio de edad de todos los miembros es de: {promedio}")
+
 
 
     # Opción 6: Buscar el miembro más joven y el más viejo
     elif opcion == "6":
-        pass
+       
+        menor = 0
+        mayor = 0
+        id_mayor = 0
+        id_menor = 0
 
+        for z in range(tam):
+            if z == 0 or menor > edades[z]:
+                menor = edades[z]
+                id_menor = identificaciones[z]
+
+        for x in range(tam):
+            if x == 0 or mayor < edades[x]:
+                mayor = edades[x]
+                id_mayor = identificaciones[x]
+        
+        for i in range(tam):
+            if id_mayor == identificaciones[i]:
+                print(f"El miembro mas veterano es: ")
+                print(f"{identificaciones[i]} \t{nombres[i]} \t{edades[i]} \t{membresias[i]}")
+            
+            if id_menor == identificaciones[i]:
+                print(f"El miembro mas joven es: ")
+                print(f"{identificaciones[i]} \t{nombres[i]} \t{edades[i]} \t{membresias[i]}")
 
     # Opcion 0: Salir
     elif opcion == "0":
